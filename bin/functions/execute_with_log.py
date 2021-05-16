@@ -89,7 +89,7 @@ def execute(workload_result_file, command_lines):
 
         try:
             line = line.rstrip()
-            log_file.write(line+"\n")
+            log_file.write(line+str.encode("\n"))
             log_file.flush()
         except KeyboardInterrupt:
             proc.terminate()
