@@ -89,7 +89,7 @@ def execute(workload_result_file, command_lines):
 
         try:
             line = line.rstrip()
-            log_file.write(line+str.encode("\n"))
+            log_file.write((line+str.encode("\n")).decode())
             log_file.flush()
         except KeyboardInterrupt:
             proc.terminate()
@@ -136,7 +136,7 @@ def execute(workload_result_file, command_lines):
             if progress is not None:
                 show_with_progress_bar(line, progress, width)
             else:
-                sys.stdout.write("{line}{ClearEnd}{ret}".format(line=line, **Color).encode('utf-8'))
+                sys.stdout.write(("{line}{ClearEnd}{ret}".format(line=line, **Color).encode('utf-8').decode()))
         sys.stdout.flush()
     print()
     log_file.close()
